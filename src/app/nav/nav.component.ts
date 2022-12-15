@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { User } from '../_models/user';
 import { AccountService } from '../_services/account.service';
 import { ToastrService } from 'ngx-toastr';
+import { MembersService } from '../_services/members.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-nav',
@@ -16,7 +18,8 @@ export class NavComponent implements OnInit {
   constructor(
     public accountService: AccountService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private memberService: MembersService
   ) {}
   ngOnInit(): void {}
 
@@ -24,6 +27,8 @@ export class NavComponent implements OnInit {
     this.accountService.login(this.model).subscribe({
       next: (response) => {
         console.log('uspesno logovanje!');
+        // let userParams = this.memberService.resetUserParams();
+        // console.log(userParams);
         this.router.navigateByUrl('/members');
       },
       error: (error) => {
