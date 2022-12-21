@@ -27,8 +27,7 @@ export class NavComponent implements OnInit {
     this.accountService.login(this.model).subscribe({
       next: (response) => {
         console.log('uspesno logovanje!');
-        // let userParams = this.memberService.resetUserParams();
-        // console.log(userParams);
+        this.memberService.resetUserParams();
         this.router.navigateByUrl('/members');
       },
       error: (error) => {
