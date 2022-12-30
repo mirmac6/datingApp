@@ -29,6 +29,7 @@ export class NavComponent implements OnInit {
         console.log('uspesno logovanje!');
         this.memberService.resetUserParams();
         this.router.navigateByUrl('/members');
+        this.model = {};
       },
       error: (error) => {
         console.log(error);
